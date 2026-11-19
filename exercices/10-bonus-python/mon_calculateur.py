@@ -67,3 +67,7 @@ if __name__ == "__main__":
     print("Réseau            :", adresse_reseau("192.168.50.50", "255.255.240.0"))
     print("Même réseau ?     :", meme_reseau("192.168.1.10", "192.168.2.10", "255.255.0.0"))
     print("Hôtes dans un /24 :", nombre_hotes(24))
+def broadcast(ip, masque):
+    ip_o = [int(x) for x in ip.split(".")]
+    m_o = [int(x) for x in masque.split(".")]
+    return ".".join(str(i | (255 - m)) for i, m in zip(ip_o, m_o))
